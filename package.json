@@ -1,0 +1,16 @@
+{
+  "name": "html-lint",
+  "version": "0.1.0",
+  "description": "",
+  "main": "lint.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "node lint.js"
+  },
+  "author": "ryo88c",
+  "license": "MIT",
+  "dependencies": {
+    "html5-lint": "^0.3.0",
+    "puppeteer": "^19.6.2"
+  }
+}
