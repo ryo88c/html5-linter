@@ -21,8 +21,8 @@ try {
     (async () => {
         const browser = await puppeteer.launch({ headless: true });
         const page = await browser.newPage();
-        await page.goto(process.argv[2]);
-        const html = await page.$eval('html', item => item.outerHTML);
+        const response = await page.goto(process.argv[2]);
+        const html = await response.text();
         await browser.close();
 
         html5Lint(html, function (err, results) {
@@ -31,7 +31,7 @@ try {
                 if (typeof console[type] !== 'function') {
                     type = 'log';
                 }
-                console[type]('%sHTML5 Lint [%s]: %s\x1b[39m', typeOfColor(type), msg.type, msg.message);
+                console[type]('%sLine:%d [%s]: %s\x1b[39m', typeOfColor(type), msg.lastLine, msg.type, msg.message);
             });
         });
     })();
